@@ -1,8 +1,12 @@
 import { Shuffle, ClipboardList, RotateCcw } from 'lucide-react'
 import { ThemeGrid } from './ThemeGrid'
 import { ThemeStats } from './ThemeStats'
+import { THEMES } from '../types'
 import type { Question, Theme } from '../types'
 import type { SpacedRepetitionHook } from '../hooks/useSpacedRepetition'
+
+const baseThemes = THEMES.filter(t => !t.expert)
+const expertThemes = THEMES.filter(t => t.expert)
 
 interface Props {
   allQuestions: Question[]
@@ -57,7 +61,7 @@ export function HomeScreen({
       </header>
 
       <main className="flex-1 p-6 w-full max-w-2xl mx-auto space-y-8 pb-12">
-        {/* 4 métriques */}
+        {/* 4 métriques globales */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {metrics.map(m => (
             <div
@@ -89,15 +93,50 @@ export function HomeScreen({
           </button>
         </div>
 
-        {/* Grille des thèmes */}
-        <ThemeGrid
-          allQuestions={allQuestions}
-          history={history}
-          onSelectTheme={onStartTheme}
-        />
+        {/* Section Révision */}
+        <div>
+          <p className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-4">
+            Révision
+          </p>
+          <div className="space-y-4">
+            <ThemeGrid
+              themes={baseThemes}
+              allQuestions={allQuestions}
+              history={history}
+              onSelectTheme={onStartTheme}
+            />
+            <ThemeStats
+              themes={baseThemes}
+              allQuestions={allQuestions}
+              history={history}
+            />
+          </div>
+        </div>
 
-        {/* Tableau des stats */}
-        <ThemeStats allQuestions={allQuestions} history={history} />
+        {/* Section Approfondissement */}
+        <div className="border-t border-slate-200 pt-8">
+          <div className="flex items-center gap-2 mb-4">
+            <p className="text-sm font-bold text-slate-400 uppercase tracking-wider">
+              Approfondissement
+            </p>
+            <span className="text-xs font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full">
+              ✦ Expert
+            </span>
+          </div>
+          <div className="space-y-4">
+            <ThemeGrid
+              themes={expertThemes}
+              allQuestions={allQuestions}
+              history={history}
+              onSelectTheme={onStartTheme}
+            />
+            <ThemeStats
+              themes={expertThemes}
+              allQuestions={allQuestions}
+              history={history}
+            />
+          </div>
+        </div>
       </main>
     </div>
   )
