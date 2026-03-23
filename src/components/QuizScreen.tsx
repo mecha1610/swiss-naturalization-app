@@ -20,7 +20,7 @@ export function QuizScreen({ questions, hook, onBack }: Props) {
   if (!current) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-6 gap-4">
-        <p className="text-slate-500">Aucune question disponible pour ce thème.</p>
+        <p className="text-slate-500">Aucune question disponible.</p>
         <button
           onClick={onBack}
           className="flex items-center gap-2 text-swiss-red font-semibold"
