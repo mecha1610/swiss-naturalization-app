@@ -1,4 +1,4 @@
-import { Shuffle, ClipboardList, RotateCcw } from 'lucide-react'
+import { Shuffle, ClipboardList, RotateCcw, Mic } from 'lucide-react'
 import { ThemeGrid } from './ThemeGrid'
 import { ThemeStats } from './ThemeStats'
 import { THEMES } from '../types'
@@ -14,6 +14,7 @@ interface Props {
   onStartTheme: (theme: Theme) => void
   onStartRandom: () => void
   onStartExam: () => void
+  onStartEntretien: () => void
 }
 
 export function HomeScreen({
@@ -22,6 +23,7 @@ export function HomeScreen({
   onStartTheme,
   onStartRandom,
   onStartExam,
+  onStartEntretien,
 }: Props) {
   const { history, getDueCount, resetWeights } = hook
 
@@ -76,20 +78,29 @@ export function HomeScreen({
         </div>
 
         {/* Boutons d'action */}
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-3">
+          <div className="flex gap-3">
+            <button
+              onClick={onStartRandom}
+              className="flex-1 bg-swiss-red hover:bg-swiss-darkred text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg shadow-red-200"
+            >
+              <Shuffle size={18} />
+              Aléatoire
+            </button>
+            <button
+              onClick={onStartExam}
+              className="flex-1 bg-slate-800 hover:bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg"
+            >
+              <ClipboardList size={18} />
+              Examen blanc
+            </button>
+          </div>
           <button
-            onClick={onStartRandom}
-            className="flex-1 bg-swiss-red hover:bg-swiss-darkred text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg shadow-red-200"
+            onClick={onStartEntretien}
+            className="w-full bg-slate-600 hover:bg-slate-700 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg"
           >
-            <Shuffle size={18} />
-            Aléatoire
-          </button>
-          <button
-            onClick={onStartExam}
-            className="flex-1 bg-slate-800 hover:bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg"
-          >
-            <ClipboardList size={18} />
-            Examen blanc
+            <Mic size={18} />
+            Entretien oral
           </button>
         </div>
 

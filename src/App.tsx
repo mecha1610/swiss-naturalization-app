@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { HomeScreen } from './components/HomeScreen'
 import { QuizScreen } from './components/QuizScreen'
 import { ExamMode } from './components/ExamMode'
+import { EntretienScreen } from './components/EntretienScreen'
 import { useSpacedRepetition } from './hooks/useSpacedRepetition'
 import questionsData from './data/questions.json'
 import type { Screen, Theme, Question } from './types'
@@ -48,6 +49,7 @@ export default function App() {
                 setScreen('quiz')
               }}
               onStartExam={() => setScreen('exam')}
+              onStartEntretien={() => setScreen('entretien')}
             />
           </motion.div>
         )}
@@ -83,6 +85,18 @@ export default function App() {
               hook={hook}
               onBack={() => setScreen('home')}
             />
+          </motion.div>
+        )}
+        {screen === 'entretien' && (
+          <motion.div
+            key="entretien"
+            variants={fadeVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.2 }}
+          >
+            <EntretienScreen onBack={() => setScreen('home')} />
           </motion.div>
         )}
       </AnimatePresence>

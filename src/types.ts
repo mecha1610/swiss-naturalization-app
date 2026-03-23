@@ -20,7 +20,7 @@ export interface Question {
   explanation: string
 }
 
-export type Screen = 'home' | 'quiz' | 'exam'
+export type Screen = 'home' | 'quiz' | 'exam' | 'entretien'
 
 export const THEMES: { id: Theme; label: string; icon: string; total: number; expert?: true }[] = [
   { id: 'politique_ch', label: 'Politique suisse',     icon: '🏛️', total: 18 },
