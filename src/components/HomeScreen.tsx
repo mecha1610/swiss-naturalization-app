@@ -50,7 +50,7 @@ export function HomeScreen({
         <button
           onClick={resetWeights}
           className="text-slate-400 hover:text-slate-700 transition p-2"
-          title="Réinitialiser la progression"
+          aria-label="Réinitialiser la progression"
         >
           <RotateCcw size={18} />
         </button>

@@ -110,6 +110,18 @@ export function ExamMode({ allQuestions, hook, onBack }: Props) {
     )
   }
 
+  // Guard against empty exam set
+  if (!examQuestions.length) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 gap-4">
+        <p className="text-slate-500">Aucune question disponible.</p>
+        <button onClick={onBack} className="flex items-center gap-2 text-swiss-red font-semibold">
+          Retour à l'accueil
+        </button>
+      </div>
+    )
+  }
+
   // — Quiz screen —
   const current = examQuestions[currentIdx]
   const answered = selectedIndex !== null
@@ -124,11 +136,11 @@ export function ExamMode({ allQuestions, hook, onBack }: Props) {
     const newAnswers = [...answers, selectedIndex === current.correct]
     setAnswers(newAnswers)
 
+    setSelectedIndex(null)
     if (currentIdx + 1 >= examQuestions.length) {
       setDone(true)
     } else {
       setCurrentIdx(prev => prev + 1)
-      setSelectedIndex(null)
     }
   }
 
@@ -145,7 +157,7 @@ export function ExamMode({ allQuestions, hook, onBack }: Props) {
       <div className="h-1 bg-slate-200">
         <div
           className="h-full bg-swiss-red transition-all duration-300"
-          style={{ width: `${(currentIdx / EXAM_COUNT) * 100}%` }}
+          style={{ width: `${((currentIdx + 1) / EXAM_COUNT) * 100}%` }}
         />
       </div>
 
