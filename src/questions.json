@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "category": "Confédération",
+    "question": "Combien y a-t-il de cantons en Suisse ?",
+    "answer": "La Suisse compte 26 cantons (dont 6 demi-cantons).",
+    "details": "Genève est l'un des 26 cantons, entré dans la Confédération en 1815."
+  },
+  {
+    "id": 2,
+    "category": "Confédération",
+    "question": "Qui a le pouvoir exécutif au niveau fédéral et combien de membres le composent ?",
+    "answer": "Le Conseil fédéral, composé de 7 membres.",
+    "details": "Ils sont élus par l'Assemblée fédérale pour 4 ans."
+  },
+  {
+    "id": 3,
+    "category": "Confédération",
+    "question": "En quelle année l'État fédéral (la Suisse moderne) a-t-il été fondé avec sa première constitution ?",
+    "answer": "1848",
+    "details": "C'est l'année de la première constitution fédérale."
+  },
+  {
+    "id": 4,
+    "category": "Canton de Genève",
+    "question": "Combien de communes compte le canton de Genève ?",
+    "answer": "Le canton de Genève compte 45 communes.",
+    "details": "Troinex en fait bien sûr partie."
+  },
+  {
+    "id": 5,
+    "category": "Canton de Genève",
+    "question": "Comment s'appelle l'exécutif du canton de Genève et combien de membres a-t-il ?",
+    "answer": "Le Conseil d'État, composé de 7 membres.",
+    "details": "Le président du Conseil d'État change chaque année."
+  },
+  {
+    "id": 6,
+    "category": "Canton de Genève",
+    "question": "Comment s'appelle le pouvoir législatif du canton de Genève ?",
+    "answer": "Le Grand Conseil.",
+    "details": "Il est composé de 100 députés élus pour 5 ans."
+  },
+  {
+    "id": 7,
+    "category": "Commune de Troinex",
+    "question": "Combien d'habitants compte environ la commune de Troinex ?",
+    "answer": "Environ 2 500 à 2 600 habitants (Troinésiens).",
+    "details": "La population a augmenté ces dernières années."
+  },
+  {
+    "id": 8,
+    "category": "Commune de Troinex",
+    "question": "Quel cours d'eau marque une grande partie de la frontière sud-ouest de Troinex, formant aussi la frontière avec la France ?",
+    "answer": "La Drize.",
+    "details": "C'est une petite rivière franco-suisse."
+  },
+  {
+    "id": 9,
+    "category": "Commune de Troinex",
+    "question": "Comment s'appelle l'exécutif de la commune de Troinex ?",
+    "answer": "Le Conseil administratif (car la commune a plus de 3000 habitants ou historiquement un exécutif de 3 membres).",
+    "details": "L'exécutif compte 3 membres, présidé par le Maire."
+  },
+  {
+    "id": 10,
+    "category": "Droits et Devoirs",
+    "question": "Quels sont les trois principaux devoirs du citoyen suisse ?",
+    "answer": "Payer ses impôts, faire le service militaire (pour les hommes), accomplir la scolarité obligatoire.",
+    "details": "Le droit de vote est un droit, pas une obligation légale stricte au niveau fédéral (sauf dans le canton de Schaffhouse)."
+  },
+  {
+    "id": 11,
+    "category": "Droits et Devoirs",
+    "question": "Qu'est-ce que l'initiative populaire au niveau fédéral ?",
+    "answer": "Le droit pour les citoyens de proposer une modification de la Constitution en récoltant 100 000 signatures en 18 mois.",
+    "details": "L'initiative est ensuite soumise à la votation populaire."
+  },
+  {
+    "id": 12,
+    "category": "Confédération",
+    "question": "De quelles couleurs est le drapeau suisse ?",
+    "answer": "Fond rouge avec une croix blanche (carrée).",
+    "details": "C'est l'un des deux seuls drapeaux nationaux carrés au monde (avec le Vatican)."
+  }
+]
