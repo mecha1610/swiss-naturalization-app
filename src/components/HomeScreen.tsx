@@ -1,0 +1,104 @@
+import { Shuffle, ClipboardList, RotateCcw } from 'lucide-react'
+import { ThemeGrid } from './ThemeGrid'
+import { ThemeStats } from './ThemeStats'
+import type { Question, Theme } from '../types'
+import type { SpacedRepetitionHook } from '../hooks/useSpacedRepetition'
+
+interface Props {
+  allQuestions: Question[]
+  hook: SpacedRepetitionHook
+  onStartTheme: (theme: Theme) => void
+  onStartRandom: () => void
+  onStartExam: () => void
+}
+
+export function HomeScreen({
+  allQuestions,
+  hook,
+  onStartTheme,
+  onStartRandom,
+  onStartExam,
+}: Props) {
+  const { history, getDueCount, resetWeights } = hook
+
+  const answered = Object.keys(history).length
+  const correct = Object.values(history).filter(h => h.correct > 0).length
+  const totalAttempts = Object.values(history).reduce((s, h) => s + h.answered, 0)
+  const totalCorrect = Object.values(history).reduce((s, h) => s + h.correct, 0)
+  const pct =
+    totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0
+  const due = getDueCount(allQuestions)
+
+  const metrics = [
+    { label: 'Répondues', value: String(answered), icon: '📝' },
+    { label: 'Correctes',  value: String(correct),  icon: '✅' },
+    { label: '% Réussite', value: `${pct}%`,        icon: '📊' },
+    { label: 'À revoir',   value: String(due),       icon: '🔄' },
+  ]
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-swiss-red to-swiss-darkred flex items-center justify-center text-white font-black text-sm shadow-md">
+            CH
+          </div>
+          <h1 className="font-bold text-slate-800 text-lg tracking-tight">
+            Naturalisation
+          </h1>
+        </div>
+        <button
+          onClick={resetWeights}
+          className="text-slate-400 hover:text-slate-700 transition p-2"
+          title="Réinitialiser la progression"
+        >
+          <RotateCcw size={18} />
+        </button>
+      </header>
+
+      <main className="flex-1 p-6 w-full max-w-2xl mx-auto space-y-8 pb-12">
+        {/* 4 métriques */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {metrics.map(m => (
+            <div
+              key={m.label}
+              className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm text-center"
+            >
+              <div className="text-xl mb-1">{m.icon}</div>
+              <div className="text-2xl font-black text-slate-800">{m.value}</div>
+              <div className="text-xs text-slate-400 font-medium mt-1">{m.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Boutons d'action */}
+        <div className="flex gap-3">
+          <button
+            onClick={onStartRandom}
+            className="flex-1 bg-swiss-red hover:bg-swiss-darkred text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg shadow-red-200"
+          >
+            <Shuffle size={18} />
+            Aléatoire
+          </button>
+          <button
+            onClick={onStartExam}
+            className="flex-1 bg-slate-800 hover:bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg"
+          >
+            <ClipboardList size={18} />
+            Examen blanc
+          </button>
+        </div>
+
+        {/* Grille des thèmes */}
+        <ThemeGrid
+          allQuestions={allQuestions}
+          history={history}
+          onSelectTheme={onStartTheme}
+        />
+
+        {/* Tableau des stats */}
+        <ThemeStats allQuestions={allQuestions} history={history} />
+      </main>
+    </div>
+  )
+}
