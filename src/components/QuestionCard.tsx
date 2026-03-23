@@ -40,14 +40,16 @@ export function QuestionCard({ question, selectedIndex, onSelect }: Props) {
             cls += 'border-slate-100 bg-slate-50 text-slate-400'
           }
 
+          if (answered) cls += ' cursor-not-allowed'
+
           return (
             <motion.button
               key={idx}
               className={cls}
               disabled={answered}
               onClick={() => onSelect(idx)}
-              animate={isWrongSelection ? { x: [0, -8, 8, -6, 6, -4, 4, 0] } : {}}
-              transition={{ duration: 0.4 }}
+              animate={isWrongSelection ? { x: [0, -8, 8, -6, 6, -4, 4, 0] } : { x: 0 }}
+              transition={isWrongSelection ? { duration: 0.4, repeat: 0 } : {}}
             >
               <span className="text-xs font-black opacity-50 shrink-0 w-5">
                 {OPTION_LETTERS[idx]}
