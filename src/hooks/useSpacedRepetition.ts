@@ -45,14 +45,17 @@ export function useSpacedRepetition() {
 
   const pickWeighted = useCallback((questions: Question[]): Question | null => {
     if (!questions.length) return null
-    const total = questions.reduce((s, q) => s + (weights[q.id] ?? 1), 0)
+    // Prioritize questions never seen — ensures full exploration before repetition
+    const unseen = questions.filter(q => !history[q.id])
+    const pool = unseen.length > 0 ? unseen : questions
+    const total = pool.reduce((s, q) => s + (weights[q.id] ?? 1), 0)
     let r = Math.random() * total
-    for (const q of questions) {
+    for (const q of pool) {
       r -= (weights[q.id] ?? 1)
       if (r <= 0) return q
     }
-    return questions[questions.length - 1]
-  }, [weights])
+    return pool[pool.length - 1]
+  }, [weights, history])
 
   const getDueCount = useCallback((questions: Question[]) => {
     return questions.filter(q => (weights[q.id] ?? 1) > 1.5).length
