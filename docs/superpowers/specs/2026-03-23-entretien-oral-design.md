@@ -31,10 +31,10 @@ Ajouter un écran "Entretien oral" permettant à Marine de préparer les questio
 | Action | Fichier | Changement |
 |---|---|---|
 | CRÉER | `src/data/entretien.json` | 28 questions en 7 catégories avec réponses modèles |
-| CRÉER | `src/components/EntretienScreen.tsx` | Écran principal |
-| MODIFIER | `src/types.ts` | `Screen` : ajouter `'entretien'` |
-| MODIFIER | `src/App.tsx` | Route vers EntretienScreen |
-| MODIFIER | `src/components/HomeScreen.tsx` | Bouton "Entretien oral" |
+| CRÉER | `src/components/EntretienScreen.tsx` | Écran principal (types `EntretienQuestion`/`EntretienCategory` déclarés inline dans ce fichier, pas dans `types.ts`) |
+| MODIFIER | `src/types.ts` | `Screen` union : ajouter `'entretien'` (seul changement) |
+| MODIFIER | `src/App.tsx` | Importer `EntretienScreen` ; ajouter état `'entretien'` dans `AnimatePresence` ; passer `onStartEntretien={() => setScreen('entretien')}` à `HomeScreen` |
+| MODIFIER | `src/components/HomeScreen.tsx` | Ajouter prop `onStartEntretien: () => void` à l'interface `Props` ; ajouter bouton sous Aléatoire/Examen blanc |
 
 **Fichiers inchangés :** `QuizScreen.tsx`, `ExamMode.tsx`, `ThemeGrid.tsx`, `ThemeStats.tsx`, `useSpacedRepetition.ts`, `questions.json`
 
@@ -43,6 +43,7 @@ Ajouter un écran "Entretien oral" permettant à Marine de préparer les questio
 ## Schema entretien.json
 
 ```ts
+// Types déclarés inline dans EntretienScreen.tsx (pas dans types.ts)
 interface EntretienQuestion {
   id: string           // ex: "m1", "v2", "g3"
   question: string     // question posée à l'oral
@@ -57,6 +58,16 @@ interface EntretienCategory {
 }
 
 // entretien.json = EntretienCategory[]
+```
+
+## Props EntretienScreen
+
+```tsx
+interface Props {
+  onBack: () => void
+}
+
+export function EntretienScreen({ onBack }: Props) { ... }
 ```
 
 ---
@@ -97,7 +108,18 @@ interface EntretienCategory {
 - Question visible
 - Réponse masquée par défaut → bouton `"Voir la réponse ▼"` (slate-600)
 - Après tap : réponse révélée + bouton "✓ Maîtrisée" apparaît
-- L'état "réponse révélée" est local au composant (reset à chaque mount), pas persisté
+- L'état "réponse révélée" est local (`useState` par carte), non persisté
+- Changer le toggle de mode (Lecture ↔ Entraînement) remet toutes les réponses à l'état masqué (reset via `key={mode}` sur le composant de liste)
+
+### Layout scroll
+Page unique scrollable, pas de sticky headers, pas d'accordéon. Les catégories sont séparées par un titre de section (`text-sm font-bold text-slate-400 uppercase tracking-wider`). 28 questions au total.
+
+### Compteur mastery
+```tsx
+const totalCount = categories.flatMap(c => c.questions).length  // 28
+const masteredCount = Object.values(mastery).filter(Boolean).length
+```
+Le toggle mode n'est pas persisté en localStorage — il revient à `'lecture'` à chaque navigation vers l'écran.
 
 ### Header
 
@@ -121,6 +143,9 @@ type Mode = 'lecture' | 'entrainement'
 ### Bouton HomeScreen
 
 ```tsx
+// Mic importé depuis lucide-react (déjà utilisé dans le projet)
+import { Shuffle, ClipboardList, RotateCcw, Mic } from 'lucide-react'
+
 <button onClick={onStartEntretien}
   className="w-full bg-slate-600 hover:bg-slate-700 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 transition active:scale-95 shadow-lg">
   <Mic size={18} />
@@ -170,7 +195,9 @@ type Mode = 'lecture' | 'entrainement'
 ### Catégorie 3 : Gouvernements (🏛️, 6 questions)
 
 **g1** — Nommez les membres du Conseil fédéral et leurs partis.
-*Réponse :* « Le Conseil fédéral compte 7 membres : Karin Keller-Sutter (PLR, présidente 2026), Ignazio Cassis (PLR), Beat Jans (PS), Elisabeth Baume-Schneider (PS), Guy Parmelin (UDC), Albert Rösti (UDC) et Martin Candinas (Centre, depuis mars 2025). Ils gouvernent collégialement — aucun n'a de pouvoir supérieur aux autres. »
+*Réponse :* « Le Conseil fédéral compte 7 membres. En 2026 : Karin Keller-Sutter (PLR, présidente 2026), Ignazio Cassis (PLR), Beat Jans (PS), Elisabeth Baume-Schneider (PS), Guy Parmelin (UDC), Albert Rösti (UDC), et le 7e siège du Centre (à vérifier sur admin.ch — Viola Amherd a démissionné fin 2025, son successeur Centre est à confirmer). Ils gouvernent collégialement — aucun n'a de pouvoir supérieur aux autres. »
+
+⚠️ **À vérifier avant déploiement** : nom exact du 7e conseiller fédéral (Centre) sur admin.ch/conseil-federal
 
 **g2** — Qui est la présidente de la Confédération en 2026 ?
 *Réponse :* « La présidente de la Confédération en 2026 est Karin Keller-Sutter, du Parti Libéral-Radical. Elle dirige le Département fédéral des finances. La présidence de la Confédération est tournante : chaque conseiller fédéral devient président pour un an. »
@@ -269,7 +296,8 @@ Géré localement dans `EntretienScreen` (useState + localStorage direct) — pa
 
 | Point | Action |
 |---|---|
+| **7e conseiller fédéral (Centre)** | ⚠️ Vérifier nom sur admin.ch/conseil-federal avant déploiement — Viola Amherd démissionnée fin 2025, successeur inconnu |
 | Membres Conseil d'État GE | Vérifier composition exacte 2025-2026 sur ge.ch |
 | Maire/exécutif Troinex | Vérifier nom exact sur troinex.ch |
-| Votations post-août 2025 | Thomas à compléter avec votations nov 2025 + mars 2026 |
+| Votations post-août 2025 | Thomas à compléter avec votations nov 2025 + mars 2026 (ajouter en `v7`, `v8`… dans entretien.json) |
 | Réponses personnelles (motivations, cantons) | Marine devra adapter à sa situation personnelle |
