@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/swiss-naturalization-app/',
+  base: process.env.GITHUB_ACTIONS ? '/swiss-naturalization-app/' : '/',
 })
