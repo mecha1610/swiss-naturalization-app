@@ -1,17 +1,19 @@
 import { ScoreBar } from './ScoreBar'
-import { THEMES } from '../types'
 import type { Theme, Question } from '../types'
 
+type ThemeEntry = { id: Theme; label: string; icon: string; total: number; expert?: true }
+
 interface Props {
+  themes: ThemeEntry[]
   allQuestions: Question[]
   history: Record<number, { answered: number; correct: number }>
   onSelectTheme: (theme: Theme) => void
 }
 
-export function ThemeGrid({ allQuestions, history, onSelectTheme }: Props) {
+export function ThemeGrid({ themes, allQuestions, history, onSelectTheme }: Props) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-      {THEMES.map(theme => {
+      {themes.map(theme => {
         const qs = allQuestions.filter(q => q.theme === theme.id)
         const answered = qs.filter(q => history[q.id]).length
         const progress = Math.round((answered / theme.total) * 100)
