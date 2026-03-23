@@ -41,10 +41,12 @@ Enrichir la base de questions et ajouter une section "Approfondissement" sur la 
 | `src/types.ts` | Modifier | Ajouter 3 slugs au type `Theme`, flag `expert` dans `THEMES` |
 | `src/data/questions.json` | Modifier | +10 Troinex, +45 nouvelles questions |
 | `src/components/HomeScreen.tsx` | Modifier | Deux sections : Révision + Approfondissement |
-| `src/components/ThemeGrid.tsx` | Modifier | Accepte un prop `questions` filtré par thèmes |
-| `src/components/ThemeStats.tsx` | Modifier | Idem |
+| `src/components/ThemeGrid.tsx` | Modifier | Ajouter prop `themes` (sous-liste de THEMES) — HomeScreen passe le bon sous-ensemble |
+| `src/components/ThemeStats.tsx` | Modifier | Idem — ajouter prop `themes` |
 
 **Fichiers inchangés :** `App.tsx`, `QuizScreen.tsx`, `ExamMode.tsx`, `useSpacedRepetition.ts`, `QuestionCard.tsx`, `AnswerFeedback.tsx`, `ScoreBar.tsx`
+
+**Note ExamMode :** L'examen blanc reçoit déjà `allQuestions` (toutes les questions). Après enrichissement, il pioчera parmi les 141 questions — comportement intentionnel, pas de changement de code.
 
 ---
 
@@ -99,6 +101,9 @@ export const THEMES: { id: Theme; label: string; icon: string; total: number; ex
 - Les métriques globales (répondues, correctes, % réussite, à revoir) portent sur **toutes** les questions (base + expert)
 - Le bouton "Aléatoire" pioche dans **toutes** les questions
 - Chaque thème (base ou expert) se lance en QuizScreen filtré — comportement identique
+- **Filtre HomeScreen :** `THEMES.filter(t => !t.expert)` → section Révision ; `THEMES.filter(t => t.expert)` → section Approfondissement
+- **Style des en-têtes de section :** texte `text-sm font-bold text-slate-400 uppercase tracking-wider` avec séparateur `border-t border-slate-200`, badge "✦ Expert" en `text-xs text-amber-500 font-bold` sur l'en-tête Approfondissement
+- **Contenu des questions :** le texte exact des questions, options, index correct et explication est généré pendant l'implémentation (Task "Questions data") — cette spec définit les sujets et la structure, pas le contenu verbatim
 
 ---
 
@@ -168,6 +173,12 @@ Sujets :
 | actualite | — | 15 |
 | culture | — | 15 |
 | **Total** | **86** | **141** |
+
+---
+
+## Extension du schema CLAUDE.md
+
+Le type `Theme` dans CLAUDE.md liste 6 valeurs. Cette spec étend l'enum à 9 valeurs. CLAUDE.md doit être mis à jour en parallèle pour rester cohérent.
 
 ---
 
