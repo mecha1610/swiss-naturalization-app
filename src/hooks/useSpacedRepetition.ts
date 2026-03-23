@@ -26,7 +26,7 @@ export function useSpacedRepetition() {
         ? Math.max(0.2, current * 0.6)
         : Math.min(5, current * 3)
       const updated = { ...prev, [id]: next }
-      localStorage.setItem(WEIGHTS_KEY, JSON.stringify(updated))
+      try { localStorage.setItem(WEIGHTS_KEY, JSON.stringify(updated)) } catch { /* storage unavailable */ }
       return updated
     })
     setHistory(prev => {
@@ -38,7 +38,7 @@ export function useSpacedRepetition() {
           correct: entry.correct + (correct ? 1 : 0),
         },
       }
-      localStorage.setItem(HISTORY_KEY, JSON.stringify(updated))
+      try { localStorage.setItem(HISTORY_KEY, JSON.stringify(updated)) } catch { /* storage unavailable */ }
       return updated
     })
   }, [])
@@ -59,8 +59,8 @@ export function useSpacedRepetition() {
   }, [weights])
 
   const resetWeights = useCallback(() => {
-    localStorage.removeItem(WEIGHTS_KEY)
-    localStorage.removeItem(HISTORY_KEY)
+    try { localStorage.removeItem(WEIGHTS_KEY) } catch { /* storage unavailable */ }
+    try { localStorage.removeItem(HISTORY_KEY) } catch { /* storage unavailable */ }
     setWeights({})
     setHistory({})
   }, [])
