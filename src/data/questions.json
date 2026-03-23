@@ -875,9 +875,9 @@
     "difficulty": 2,
     "choices": 3,
     "question": "Quelle est la superficie approximative de la commune de Troinex ?",
-    "options": ["Environ 1 km²", "Environ 4,6 km²", "Environ 15 km²"],
+    "options": ["Environ 0,8 km²", "Environ 2,5 km²", "Environ 12 km²"],
     "correct": 1,
-    "explanation": "Troinex s'étend sur environ 4,6 km², ce qui en fait une petite commune à dominante rurale et résidentielle du canton de Genève."
+    "explanation": "Troinex s'étend sur environ 2,56 km² (source OFS), ce qui en fait une petite commune à dominante rurale et résidentielle du canton de Genève."
   },
   {
     "id": 89,
@@ -1187,7 +1187,7 @@
     "question": "Quelle est la composition partisane du Conseil fédéral depuis les élections de 2023 ?",
     "options": ["2 PS + 2 PLR + 2 UDC + 1 Centre", "3 UDC + 2 PS + 2 PLR", "2 PS + 2 PLR + 1 UDC + 2 Verts", "2 PS + 2 Centre + 2 PLR + 1 UDC"],
     "correct": 0,
-    "explanation": "Depuis fin 2023, le Conseil fédéral est composé de : 2 PS (Beat Jans, Elisabeth Baume-Schneider), 2 PLR (Karin Keller-Sutter, Ignazio Cassis), 2 UDC (Guy Parmelin, Albert Rösti) et 1 Centre (Viola Amherd)."
+    "explanation": "Depuis 2025, le Conseil fédéral est composé de : 2 PS (Beat Jans, Elisabeth Baume-Schneider), 2 PLR (Karin Keller-Sutter, Ignazio Cassis), 2 UDC (Guy Parmelin, Albert Rösti) et 1 Centre (Martin Candinas, qui a remplacé Viola Amherd démissionnaire en mars 2025)."
   },
   {
     "id": 120,
