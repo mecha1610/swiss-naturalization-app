@@ -1,12 +1,14 @@
-import { THEMES } from '../types'
-import type { Question } from '../types'
+import type { Theme, Question } from '../types'
+
+type ThemeEntry = { id: Theme; label: string; icon: string; total: number; expert?: true }
 
 interface Props {
+  themes: ThemeEntry[]
   allQuestions: Question[]
   history: Record<number, { answered: number; correct: number }>
 }
 
-export function ThemeStats({ allQuestions, history }: Props) {
+export function ThemeStats({ themes, allQuestions, history }: Props) {
   return (
     <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
       <table className="w-full text-sm">
@@ -18,7 +20,7 @@ export function ThemeStats({ allQuestions, history }: Props) {
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-50">
-          {THEMES.map(theme => {
+          {themes.map(theme => {
             const qs = allQuestions.filter(q => q.theme === theme.id)
             const answered = qs.filter(q => history[q.id]).length
             const totalAttempts = qs.reduce(
