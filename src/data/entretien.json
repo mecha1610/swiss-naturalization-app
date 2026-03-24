@@ -66,7 +66,7 @@
       {
         "id": "g1",
         "question": "Nommez les membres du Conseil fédéral et leurs partis.",
-        "answer": "Le Conseil fédéral compte 7 membres. En 2026 : Karin Keller-Sutter (PLR, présidente), Ignazio Cassis (PLR), Beat Jans (PS), Elisabeth Baume-Schneider (PS), Guy Parmelin (UDC), Albert Rösti (UDC), et le 7e siège du Centre (à vérifier sur admin.ch — Viola Amherd a démissionné fin 2025). Ils gouvernent collégialement — aucun n'a de pouvoir supérieur aux autres."
+        "answer": "Le Conseil fédéral compte 7 membres. En 2026 : Karin Keller-Sutter (PLR, présidente), Ignazio Cassis (PLR), Beat Jans (PS), Elisabeth Baume-Schneider (PS), Guy Parmelin (UDC), Albert Rösti (UDC), et le 7e siège revient au Centre — Viola Amherd ayant démissionné fin 2025, son successeur est à confirmer sur admin.ch avant l'entretien. Ils gouvernent collégialement — aucun n'a de pouvoir supérieur aux autres."
       },
       {
         "id": "g2",
@@ -135,12 +135,12 @@
       {
         "id": "d3",
         "question": "Comment fonctionne le système de retraite suisse ?",
-        "answer": "Le système suisse de retraite repose sur trois piliers. Le premier pilier est l'AVS (rente de base pour tous). Le deuxième pilier est la LPP (prévoyance professionnelle obligatoire pour les salariés). Le troisième pilier est l'épargne volontaire privée (3a ou 3b), avantageuse fiscalement. Ces trois piliers combinés visent à maintenir environ 60% du dernier salaire à la retraite."
+        "answer": "Le système suisse de retraite repose sur trois piliers. Le premier pilier est l'AVS (rente de base pour tous, financée par les cotisations salariés et employeurs). Le deuxième pilier est la LPP (prévoyance professionnelle obligatoire pour les salariés). Le troisième pilier est l'épargne volontaire privée (3a ou 3b), avantageuse fiscalement. Ces trois piliers combinés visent à maintenir environ 60% du dernier salaire à la retraite."
       },
       {
         "id": "d4",
         "question": "Qu'est-ce que la LAMal ?",
-        "answer": "La LAMal est la Loi sur l'assurance-maladie obligatoire. Toute personne résidant en Suisse doit s'affilier à une caisse maladie dans les 3 mois suivant son arrivée. Elle couvre les soins de base avec une franchise annuelle (minimum 300 CHF) et une quote-part de 10%. À Genève, les primes sont parmi les plus élevées de Suisse."
+        "answer": "La LAMal est la Loi sur l'assurance-maladie obligatoire. Toute personne résidant en Suisse doit s'affilier à une caisse maladie dans les 3 mois suivant son arrivée. Elle couvre les soins de base avec une franchise annuelle (minimum 300 CHF) et une quote-part de 10%. Les primes varient selon la caisse choisie, la franchise et le canton — à Genève, elles sont parmi les plus élevées de Suisse."
       }
     ]
   },
@@ -152,7 +152,7 @@
       {
         "id": "s1",
         "question": "Quels sont les grands défis du canton de Genève aujourd'hui ?",
-        "answer": "Genève fait face à plusieurs défis majeurs : la crise du logement (loyers très élevés, taux de vacance inférieur à 1%), la pression sur les transports publics avec la croissance de l'agglomération transfrontalière du Grand Genève, et les enjeux environnementaux comme la préservation des espaces verts dans un canton très densifié."
+        "answer": "Genève fait face à plusieurs défis majeurs : la crise du logement (loyers très élevés, appartements rares — taux de vacance inférieur à 1%), la pression sur les transports publics avec la croissance de l'agglomération transfrontalière du Grand Genève, et les enjeux environnementaux comme la qualité de l'air et la préservation des espaces verts dans un canton très densifié."
       },
       {
         "id": "s2",
@@ -179,12 +179,12 @@
       {
         "id": "c2",
         "question": "Quels cantons suisses avez-vous visités ?",
-        "answer": "J'ai visité plusieurs cantons suisses : Vaud pour Lausanne et les bords du lac Léman, le Valais pour les stations de ski et les Alpes, Fribourg et sa vieille ville médiévale, et Berne, la capitale fédérale, avec le Palais fédéral. Ces voyages m'ont permis de découvrir la diversité linguistique et culturelle de la Suisse."
+        "answer": "J'ai visité plusieurs cantons suisses : Vaud pour Lausanne et les bords du lac Léman, le Valais pour les stations de ski et les Alpes, Fribourg et sa vieille ville médiévale, et Berne, la capitale fédérale, avec le Palais fédéral. Ces voyages m'ont permis de découvrir la diversité linguistique et culturelle de la Suisse, de la Romandie à la Suisse alémanique."
       },
       {
         "id": "c3",
         "question": "Quels médias suivez-vous pour vous informer sur l'actualité suisse ?",
-        "answer": "Je suis l'actualité principalement via la RTS (Radio Télévision Suisse) — le journal télévisé et rts.ch. Je lis la Tribune de Genève pour l'actualité locale. Je consulte ch.ch pour les informations officielles sur les votations et les droits civiques. Ces sources me permettent de rester informée des enjeux locaux et nationaux."
+        "answer": "Je suis l'actualité principalement via la RTS (Radio Télévision Suisse) — le journal télévisé et rts.ch. Je lis la Tribune de Genève pour l'actualité locale genevoise et troinexoise. Je consulte ch.ch pour les informations officielles sur les votations et les droits civiques. Ces sources me permettent de rester informée des enjeux locaux et nationaux."
       }
     ]
   }
