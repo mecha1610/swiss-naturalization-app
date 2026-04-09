@@ -4,9 +4,9 @@
 
 Application web de révision QCM pour l'examen oral de naturalisation suisse.
 
-- Candidat : Marine Claver, commune de Troinex (GE-1256)
-- Examen : 31 mars 2026
-- Deadline livraison : 25 mars 2026
+- Commune cible : Troinex (GE-1256)
+- Examen : mars 2026
+- Deadline livraison : mars 2026
 
 ---
 
